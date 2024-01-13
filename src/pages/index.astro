@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <button>Send Email</button>
+</Layout>
+
+<script>
+  document.querySelector("button")?.addEventListener("click", async () => {
+    try {
+      const res = await fetch("./api/sendEmail.json", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: "Acme <onboarding@resend.dev>",
+          to: ["todelanoivan13@gmail.com"],
+          subject: "Hello World",
+          html: "<strong>Hello</strong>",
+          text: "hi",
+        }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+</script>
