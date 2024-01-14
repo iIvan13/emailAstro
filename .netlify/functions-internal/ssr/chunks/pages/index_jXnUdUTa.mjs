@@ -16,7 +16,7 @@ const $$Astro = createAstro();
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Welcome to Astro." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<button class="bg-blue-600 px-2 py-1 rounded-md text-white">Send Email</button> ` })} `;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Welcome to Astro.", "data-astro-cid-j7pv25f6": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<button class="bg-black text-white rounded-lg justify-center" data-astro-cid-j7pv25f6> <div class="dot-spinner" id="loading" data-astro-cid-j7pv25f6> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> <div class="dot-spinner__dot" data-astro-cid-j7pv25f6></div> </div> <span class="span-dis" data-astro-cid-j7pv25f6>Send</span> </button> ` })}  `;
 }, "/mnt/sda2/Projects/magical-main/src/pages/index.astro", void 0);
 
 const $$file = "/mnt/sda2/Projects/magical-main/src/pages/index.astro";
