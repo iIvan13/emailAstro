@@ -14,7 +14,8 @@ import Layout from "../layouts/Layout.astro";
       <div class="dot-spinner__dot"></div>
       <div class="dot-spinner__dot"></div>
     </div>
-    <span class="span-dis">Send</span>
+    <span class="span-dis" id="sendEm">Send</span>
+    <span class="error" id="errorEm">❌</span>
   </button>
 </Layout>
 
@@ -23,10 +24,13 @@ import Layout from "../layouts/Layout.astro";
 
   myBoton.addEventListener("click", async () => {
     const loadingS = document.getElementById("loading");
-    const span = document.querySelector("span");
+    const span = document.getElementById("sendEm");
+    const errorE = document.getElementById("errorEm");
 
     loadingS.classList.toggle("toogle");
     span.classList.toggle("open");
+
+    let error = null;
 
     try {
       const res = await fetch("./api/sendEmail.json", {
@@ -37,7 +41,7 @@ import Layout from "../layouts/Layout.astro";
           to: ["todelanoivan13@gmail.com"],
           subject: "Hello World",
           html: "<strong>Hello</strong>",
-          text: "hi",
+          text: "hola",
         }),
       });
 
@@ -45,9 +49,18 @@ import Layout from "../layouts/Layout.astro";
       console.log(data);
     } catch (e) {
       console.error(e);
+
+      errorE.classList.toggle("active");
+
+      error = e;
     } finally {
       loadingS.classList.remove("toogle");
-      span.classList.remove("open");
+
+      if (!error) {
+        span.classList.toggle("open");
+      } else {
+        console.log(error);
+      }
     }
   });
 </script>
@@ -67,6 +80,14 @@ import Layout from "../layouts/Layout.astro";
 
   .span-dis.open {
     display: none;
+  }
+
+  .error {
+    display: none;
+  }
+
+  .error.active {
+    display: block;
   }
 
   .dot-spinner {
